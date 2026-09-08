@@ -1,0 +1,47 @@
+[
+  {
+    "id": "route_001",
+    "input": "Write a Python function to parse inspection reports",
+    "task_type": "code_generation",
+    "model_selected": "Granite-4.1-8B",
+    "confidence": 0.94,
+    "latency_ms": 87,
+    "timestamp": "2026-09-02T17:30:05"
+  },
+  {
+    "id": "route_002",
+    "input": "Summarize the attached inspection report and check against SOP",
+    "task_type": "document_reasoning",
+    "model_selected": "Nemotron-9B",
+    "confidence": 0.91,
+    "latency_ms": 112,
+    "timestamp": "2026-09-02T17:31:22"
+  },
+  {
+    "id": "route_003",
+    "input": "Read the handwritten note in this image",
+    "task_type": "vision_ocr",
+    "model_selected": "Qwen2.5-VL-7B",
+    "confidence": 0.98,
+    "latency_ms": 78,
+    "timestamp": "2026-09-02T17:32:40"
+  },
+  {
+    "id": "route_004",
+    "input": "Draft an approval note for the Aug maintenance findings",
+    "task_type": "document_reasoning",
+    "model_selected": "Nemotron-9B",
+    "confidence": 0.89,
+    "latency_ms": 134,
+    "timestamp": "2026-09-02T17:33:55"
+  },
+  {
+    "id": "route_005",
+    "input": "Generate a spreadsheet tracking all open action items",
+    "task_type": "code_generation",
+    "model_selected": "Granite-4.1-8B",
+    "confidence": 0.86,
+    "latency_ms": 95,
+    "timestamp": "2026-09-02T17:35:10"
+  }
+]

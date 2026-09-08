@@ -1,0 +1,25 @@
+# docker-compose.yml (excerpt) — enforce network isolation at container level
+# Use --network none on the inference containers so even if iptables is wrong,
+# Docker's own network namespace guarantees no egress path.
+
+services:
+  sovereign_api:
+    image: sovereign:latest
+    network_mode: none           # no network adapter at all
+    volumes:
+      - ./models:/models:ro
+      - ./data:/data:ro
+      - ./outputs:/outputs
+    restart: unless-stopped
+
+  # If you need the loopback dashboard, use a named network with internal: true
+  sovereign_dashboard:
+    image: sovereign_ui:latest
+    networks:
+      - internal_only
+    ports:
+      - "127.0.0.1:3000:3000"   # expose only on loopback, never 0.0.0.0
+
+networks:
+  internal_only:
+    internal: true               # no routing to the host's external interface

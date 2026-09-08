@@ -1,0 +1,32 @@
+INSPECTION REPORT — Centrifugal Pump P-105 Seal Assembly
+Date: 2026-08-22
+Inspector: R. Sharma
+Location: Plant A, Pump Room 2
+
+SUMMARY
+-------
+Emergency inspection triggered by vibration alarm (Alert ID: ALR-20260822-047).
+Mechanical seal found degraded beyond acceptable limits. Immediate shutdown
+and seal replacement required.
+
+FINDINGS
+--------
+1. Mechanical seal faces: 1.4mm wear groove detected. Limit per SOP-PMP-004 is 0.5mm.
+   Status: FAIL — replace immediately.
+2. Bearing housing temperature: 78°C (max allowable: 65°C).
+   Status: FAIL — bearing replacement recommended.
+3. Shaft runout: 0.08mm (max: 0.05mm). Status: FAIL.
+4. Stuffing box: evidence of product leakage (fluid collected in drip pan).
+
+RECOMMENDATION
+--------------
+Immediate shutdown of P-105. Replace mechanical seal with stock item SL-1048.
+Inspect and replace bearing set. Perform shaft alignment check post-repair.
+Estimated downtime: 18–24 hours.
+
+REFERENCES
+----------
+- SOP-PMP-004: Centrifugal Pump Maintenance Procedure v2.0
+- Vendor Bulletin: FlowTech TB-2026-11 (seal replacement guide)
+
+Inspector signature: _________________

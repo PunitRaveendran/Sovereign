@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Sovereign — Air-gapped AI workbench for confidential industrial work. Self-hosted, zero-egress, role-gated.">
+  <title>Sovereign — AI Workbench</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style/tokens.css?v=8">
+  <link rel="stylesheet" href="style/layout.css?v=8">
+  <link rel="stylesheet" href="style/components.css?v=8">
+  <link rel="stylesheet" href="style/animations.css?v=8">
+</head>
+
+<body>
+<!-- Glassmorphism filter from vanta.supply (Buttons) -->
+<svg width="0" height="0" aria-hidden="true" style="position: absolute;">
+  <defs>
+    <filter id="gg-glass-filter" color-interpolation-filters="sRGB" x="0" y="0" width="220" height="64" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
+    <feImage href="data:image/png;base64,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" x="0" y="0" width="220" height="64" result="gg-map"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-40.144" xChannelSelector="R" yChannelSelector="G" result="gg-dr"/>
+    <feColorMatrix in="gg-dr" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cr"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-42.706" xChannelSelector="R" yChannelSelector="G" result="gg-dg"/>
+    <feColorMatrix in="gg-dg" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cg"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-45.269" xChannelSelector="R" yChannelSelector="G" result="gg-db"/>
+    <feColorMatrix in="gg-db" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gg-cb"/>
+    <feComposite in="gg-cr" in2="gg-cg" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="gg-rg"/>
+    <feComposite in="gg-rg" in2="gg-cb" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+  </filter>
+  </defs>
+</svg>
+
+<!-- Glassmorphism filter from vanta.supply (Navbar) -->
+<svg width="0" height="0" aria-hidden="true" style="position: absolute;">
+  <defs>
+    <filter id="gg-navbar-filter" color-interpolation-filters="sRGB" x="0" y="0" width="720" height="72" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
+    <feImage href="data:image/png;base64,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" x="0" y="0" width="720" height="72" result="gg-map"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-43.004" xChannelSelector="R" yChannelSelector="G" result="gg-dr"/>
+    <feColorMatrix in="gg-dr" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cr"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-45.749" xChannelSelector="R" yChannelSelector="G" result="gg-dg"/>
+    <feColorMatrix in="gg-dg" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cg"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-48.494" xChannelSelector="R" yChannelSelector="G" result="gg-db"/>
+    <feColorMatrix in="gg-db" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gg-cb"/>
+    <feComposite in="gg-cr" in2="gg-cg" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="gg-rg"/>
+    <feComposite in="gg-rg" in2="gg-cb" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+  </filter>
+  </defs>
+</svg>
+
+<!-- Glassmorphism filter from vanta.supply (Tabs/Chat Input) -->
+<svg width="0" height="0" aria-hidden="true" style="position: absolute;">
+  <defs>
+    <filter id="gg-tabs-filter" color-interpolation-filters="sRGB" x="0" y="0" width="520" height="56" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
+    <feImage href="data:image/png;base64,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" x="0" y="0" width="520" height="56" result="gg-map"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-36.794" xChannelSelector="R" yChannelSelector="G" result="gg-dr"/>
+    <feColorMatrix in="gg-dr" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cr"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-39.142" xChannelSelector="R" yChannelSelector="G" result="gg-dg"/>
+    <feColorMatrix in="gg-dg" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cg"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-41.491" xChannelSelector="R" yChannelSelector="G" result="gg-db"/>
+    <feColorMatrix in="gg-db" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gg-cb"/>
+    <feComposite in="gg-cr" in2="gg-cg" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="gg-rg"/>
+    <feComposite in="gg-rg" in2="gg-cb" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+  </filter>
+  </defs>
+</svg>
+
+<!-- Glassmorphism filter from vanta.supply (Cards) -->
+<svg width="0" height="0" aria-hidden="true" style="position: absolute;">
+  <defs>
+    <filter id="gg-card-filter" color-interpolation-filters="sRGB" x="0" y="0" width="420" height="280" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse">
+    <feImage href="data:image/png;base64,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" x="0" y="0" width="420" height="280" result="gg-map"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-8.638" xChannelSelector="R" yChannelSelector="G" result="gg-dr"/>
+    <feColorMatrix in="gg-dr" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cr"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-9.19" xChannelSelector="R" yChannelSelector="G" result="gg-dg"/>
+    <feColorMatrix in="gg-dg" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="gg-cg"/>
+    <feDisplacementMap in="SourceGraphic" in2="gg-map" scale="-9.741" xChannelSelector="R" yChannelSelector="G" result="gg-db"/>
+    <feColorMatrix in="gg-db" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gg-cb"/>
+    <feComposite in="gg-cr" in2="gg-cg" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="gg-rg"/>
+    <feComposite in="gg-rg" in2="gg-cb" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+  </filter>
+  </defs>
+</svg>
+
+  <div id="app">
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!--  LOGIN VIEW                                     -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="login-view" class="view active split-screen-login">
+      <!-- Left side: Hero / Branding -->
+      <div class="login-hero">
+        <div class="hero-content">
+          <div class="logo-mark hero-logo">S</div>
+          <h1 class="login-title hero-title">SOVEREIGN</h1>
+          <p class="login-subtitle hero-subtitle">Your friendly air-gapped AI workbench.</p>
+        </div>
+      </div>
+
+      <!-- Right side: Selection -->
+      <div class="login-panel">
+        <div class="login-panel-inner">
+
+
+          <div class="fluid-tabs" id="role-fluid-tabs">
+            <div class="fluid-active-pill" id="role-active-pill"></div>
+            
+            <button class="fluid-tab magnetic" data-role="web_dev">
+              <div class="fluid-tab-content">
+                <span class="fluid-tab-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </span>
+                <span class="tab-text">Web Dev</span>
+              </div>
+            </button>
+            
+            <button class="fluid-tab magnetic" data-role="department_lead">
+              <div class="fluid-tab-content">
+                <span class="fluid-tab-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </span>
+                <span class="tab-text">Dept. Lead</span>
+              </div>
+            </button>
+
+            <button class="fluid-tab magnetic" data-role="management">
+              <div class="fluid-tab-content">
+                <span class="fluid-tab-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                </span>
+                <span class="tab-text">Management</span>
+              </div>
+            </button>
+
+            <button class="fluid-tab magnetic" data-role="vp_ceo">
+              <div class="fluid-tab-content">
+                <span class="fluid-tab-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </span>
+                <span class="tab-text">VP / CEO</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="hero-decor" style="text-align: center;">
+             <div style="margin-top: 24px; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); opacity: 0.5; line-height: 2;">
+               SYSTEM STATUS: ONLINE<br>
+               CONNECTION: LOCALHOST<br>
+               VRAM: READY
+             </div>
+          </div>
+          <!-- Air-gap badge -->
+          <div style="margin-top:48px;display:flex;align-items:center;justify-content:center;gap:12px;">
+            <div class="airgap-indicator"></div>
+            <span style="font-size:var(--text-xs);color:var(--text-muted);font-weight:var(--weight-bold);">Secure · Air-Gapped · On-Device</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!--  AUTH VIEW                                      -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="auth-view" class="view">
+      <div class="auth-panel">
+        <h2 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--sp-2);">Enter Credentials</h2>
+        <p style="color: var(--text-muted); font-size: var(--text-sm); margin-bottom: var(--sp-6);">Authenticate to access your workspace.</p>
+        
+        <input type="password" id="auth-password" class="neumorphic-input" placeholder="Password">
+        
+        <div style="margin-top: var(--sp-6); display: flex; justify-content: center;">
+          <button id="auth-login-btn" class="neumorphic-btn magnetic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+            <span>Login</span>
+          </button>
+        </div>
+        <button id="auth-back-btn" style="margin-top: var(--sp-6); background: transparent; border: none; color: var(--text-muted); font-size: var(--text-xs); cursor: pointer; text-decoration: underline;">← Back to roles</button>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!--  DASHBOARD VIEW (Bento Grid)                    -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="dashboard-view" class="view">
+
+      <!-- ── FLOATING TOPBAR ── -->
+      <header id="topbar" class="bento-panel">
+        <div class="topbar-left">
+          <div class="sovereign-logo">
+            <div class="logo-mark">S</div>
+            <span class="logo-text">Sovereign</span>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <!-- Routing banner -->
+          <div id="routing-banner" class="router-banner" style="display:none;max-width:480px;"></div>
+        </div>
+
+        <div class="topbar-right">
+
+          <button id="sidebar-toggle-btn" class="magnetic" style="display:flex;align-items:center;gap:8px;background:transparent;border:none;cursor:pointer;padding:4px 8px;border-radius:var(--radius-sm);">
+            <div class="airgap-indicator"></div>
+            <span style="font-size:var(--text-sm);font-weight:var(--weight-bold);color:var(--text-muted);">Sidebars</span>
+          </button>
+
+          <div class="topbar-divider"></div>
+
+          <!-- Role Indicator -->
+          <div class="role-selector magnetic" id="role-selector" style="cursor: default; gap: 10px;">
+            <span style="display:flex;align-items:center;color:var(--text-primary);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </span>
+            <div style="display: flex; flex-direction: column; justify-content: center; gap: 2px;">
+              <span class="role-name" id="topbar-role-name" style="line-height: 1; font-weight: 600;">—</span>
+            </div>
+          </div>
+
+          <button class="btn-icon magnetic" id="clear-chat-btn" title="Clear chat">🗑️</button>
+          
+          <div class="topbar-divider"></div>
+
+          <button class="btn-icon magnetic" id="theme-toggle" title="Toggle theme" style="background: var(--bg-card); border: 1px solid var(--border-default); box-shadow: var(--shadow-sm); border-radius: 50%; width: 36px; height: 36px; color: var(--text-primary); display: flex; align-items: center; justify-content: center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </div>
+      </header>
+
+
+      <!-- ── MAIN BENTO GRID ── -->
+      <div id="main-layout">
+
+        <!-- ── LEFT BENTO COLUMN ── -->
+        <aside id="sidebar">
+          
+          <!-- Upload Panel -->
+          <div class="bento-panel scroll-reveal">
+            <div class="panel-header">
+              <span class="section-title">Drop Files</span>
+            </div>
+            <div class="panel-body">
+              <div class="upload-zone magnetic" id="upload-zone">
+                <div class="upload-icon">☁️</div>
+                <div class="upload-text">Drag & drop files here!</div>
+                <div class="upload-subtext">PDF, PNG, DOCX, XLSX...</div>
+              </div>
+              <input type="file" id="file-input" style="display:none;" multiple accept=".pdf,.png,.jpg,.jpeg,.docx,.xlsx,.pptx,.txt,.csv">
+            </div>
+          </div>
+
+          <!-- Files Panel -->
+          <div class="bento-panel flex-grow scroll-reveal" style="margin-top: var(--sp-4);">
+            <div class="panel-header">
+              <span class="section-title">Your Files</span>
+            </div>
+            <div class="panel-body flex-grow overflow-auto" id="uploaded-files-list">
+              <div class="empty-state">No files yet. Upload something!</div>
+            </div>
+          </div>
+          
+          <!-- Deliverables Panel -->
+          <div class="bento-panel flex-grow scroll-reveal" style="margin-top: var(--sp-4);">
+            <div class="panel-header">
+              <span class="section-title">Deliverables</span>
+              <span class="badge badge-teal">↓ DL</span>
+            </div>
+            <div class="panel-body flex-grow overflow-auto" id="deliverables-list">
+              <div class="empty-state">Generated files appear here</div>
+            </div>
+          </div>
+
+        </aside>
+
+
+        <!-- ── CENTER CHAT BENTO ── -->
+        <main id="chat-area" class="bento-panel scroll-reveal delay-1">
+          <div id="chat-messages">
+            <!-- Welcome state -->
+            <div class="chat-welcome" id="chat-welcome">
+              <!-- Removed welcome-icon -->
+              <div class="welcome-title">Hi! I'm Sovereign.</div>
+              <div class="welcome-desc">
+                What are we working on today? Everything you do here is 100% private and air-gapped.
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Area -->
+          <div id="chat-input-area">
+            <div id="attachment-bar" style="display:none;padding:0 0 12px;flex-wrap:wrap;gap:8px;"></div>
+            <div class="chat-input-wrapper">
+
+              <textarea id="chat-input" placeholder="Ask me anything..." rows="1" autocomplete="off" spellcheck="true"></textarea>
+              <button class="btn btn-primary magnetic" id="send-btn">
+                <span>Send</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </div>
+          </div>
+        </main>
+
+
+        <!-- ── RIGHT BENTO COLUMN ── -->
+        <aside id="right-panel">
+          
+          <!-- Router Panel -->
+          <div class="bento-panel scroll-reveal delay-2">
+            <div class="panel-header">
+              <span class="section-title">AI Brains</span>
+              <span class="badge badge-blue">Live</span>
+            </div>
+            <div class="panel-body">
+              <div id="model-cards" class="model-cards-grid"></div>
+              <div style="margin-top: 16px;">
+                <div class="section-title" style="margin-bottom:8px;font-size:12px;">Recent thoughts</div>
+                <div id="route-history">
+                  <div class="empty-state">Nothing yet!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VRAM Panel -->
+          <div class="bento-panel scroll-reveal delay-2" style="margin-top: var(--sp-4);">
+            <div class="panel-header">
+              <span class="section-title">Brain Power</span>
+              <span class="badge badge-dot monospace badge-blue" id="vram-pct-badge">—</span>
+            </div>
+            <div class="panel-body">
+              <div class="vram-stats">
+                <div>
+                  <div class="vram-used-label" id="vram-used-label">— / 8 GB</div>
+                  <div class="vram-model-label" id="vram-model-label">Waking up...</div>
+                </div>
+              </div>
+              <div style="margin-top:12px;">
+                <canvas id="vram-canvas" height="90"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audit Log Panel -->
+          <div class="bento-panel flex-grow scroll-reveal delay-2" style="margin-top: var(--sp-4);">
+            <div class="panel-header">
+              <span class="section-title">Access Log</span>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <span class="badge badge-success">✅ <span id="audit-granted-count">0</span></span>
+                <span class="badge badge-danger">❌ <span id="audit-denied-count">0</span></span>
+              </div>
+            </div>
+            <div id="audit-log-list" class="panel-body flex-grow overflow-auto" style="padding-top:0;">
+              <div class="empty-state">Listening for events...</div>
+            </div>
+          </div>
+
+        </aside>
+      </div><!-- /#main-layout -->
+    </div><!-- /#dashboard-view -->
+  </div><!-- /#app -->
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toast-container"></div>
+  
+  <!-- Custom Cursor Trail -->
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+  <script src="js/theme.js?v=8"></script>
+  <script src="config.js?v=8"></script>
+  <script src="js/animations.js?v=8"></script>
+  <script src="js/mock.js?v=8"></script>
+  <script src="js/vram-chart.js?v=8"></script>
+  <script src="js/network-monitor.js?v=8"></script>
+  <script src="js/audit-log.js?v=8"></script>
+  <script src="js/router-panel.js?v=8"></script>
+  <script src="js/chat.js?v=8"></script>
+  <script src="js/file-manager.js?v=8"></script>
+  <script src="js/app.js?v=8"></script>
+
+</body>
+</html>

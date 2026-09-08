@@ -1,0 +1,22 @@
+version: "3.8"
+
+# ==============================================================================
+# Sovereign AI Workbench — Sandbox Compose Definition
+# Build: docker compose -f docker/docker-compose.sandbox.yml build
+# ==============================================================================
+
+services:
+  sandbox:
+    build:
+      context: .
+      dockerfile: Dockerfile.sandbox
+    image: sovereign-sandbox:latest
+    container_name: sovereign_code_sandbox
+    network_mode: "none"                # HARD ENFORCEMENT: Zero egress, air-gapped
+    mem_limit: 1024m                    # 1 GB RAM allocation to prevent matrix calc OOM
+    cpus: 1.0                           # 1 CPU core quota
+    read_only: true                     # Root filesystem is strictly read-only
+    tmpfs:
+      - /tmp:size=64m                   # Ephemeral scratch memory only
+    security_opt:
+      - no-new-privileges:true

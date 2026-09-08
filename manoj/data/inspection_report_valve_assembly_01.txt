@@ -1,0 +1,32 @@
+INSPECTION REPORT — Valve Assembly Unit 7
+Date: 2026-08-15
+Inspector: A. Kumar
+Location: Plant B, Bay 3
+
+SUMMARY
+-------
+Full inspection of ball valve assembly (Unit 7) following routine maintenance
+cycle. Valve body shows 3% wall-thickness reduction on the upstream flange,
+within the 5% threshold defined in SOP-VAL-002. No active leak detected.
+
+FINDINGS
+--------
+1. Upstream flange: wall thickness measured at 9.7mm (nominal: 10mm, min: 9.5mm).
+   Status: ACCEPTABLE — monitor at next 3-month interval.
+2. Actuator seal: light scoring on o-ring seating surface. Score depth < 0.1mm.
+   Status: FLAG — replace o-ring at next planned shutdown.
+3. Valve stem torque: 42 N·m (spec: 38–45 N·m). Status: PASS.
+4. Visual: No visible corrosion on body. Coating intact.
+
+RECOMMENDATION
+--------------
+Schedule o-ring replacement during Q4 planned shutdown (October 14–16, 2026).
+Continue quarterly monitoring of flange thickness. No immediate action required.
+
+REFERENCES
+----------
+- SOP-VAL-002: Ball Valve Inspection Procedure v3.1
+- Engineering Drawing: ENG-0042-B, Rev 4
+- Previous inspection: 2026-05-18 (all pass)
+
+Inspector signature: _________________

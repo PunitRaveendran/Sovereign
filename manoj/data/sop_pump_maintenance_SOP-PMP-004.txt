@@ -1,0 +1,33 @@
+STANDARD OPERATING PROCEDURE
+SOP-PMP-004: Centrifugal Pump Maintenance Procedure
+Version: 2.0 | Effective: 2024-06-01 | Review: 2026-06-01
+
+1. SCOPE
+   All centrifugal pumps in Plants A–C with power rating up to 75 kW.
+
+2. MECHANICAL SEAL INSPECTION
+   2.1 Maximum allowable seal face wear: 0.5mm groove depth.
+   2.2 Replace seal if leakage exceeds 20 drops/minute from seal flush line.
+   2.3 After replacement: run pump on water for 30 min before process restart.
+
+3. BEARING INSPECTION
+   3.1 Maximum housing temperature: 65°C (measured by contact thermometer).
+   3.2 Vibration velocity: < 2.8 mm/s RMS per ISO 10816.
+   3.3 Replace bearings at or above: temperature 75°C OR vibration 4.5 mm/s.
+
+4. SHAFT ALIGNMENT
+   4.1 Allowable parallel misalignment: 0.05mm.
+   4.2 Allowable angular misalignment: 0.05mm/100mm.
+   4.3 Use laser alignment tool; record values in form IF-PMP-004.
+
+5. SEAL REPLACEMENT PROCEDURE
+   Step 1: Isolate pump, drain casing, disconnect coupling.
+   Step 2: Remove gland plate; extract old seal components.
+   Step 3: Clean seal chamber and shaft sleeve. Inspect sleeve for scoring.
+   Step 4: Install new seal per vendor assembly drawing.
+   Step 5: Reassemble in reverse order; pressure-test at 1.5× operating pressure.
+   Step 6: Complete Work Order and update equipment history card.
+
+6. SPARE PARTS REFERENCE
+   Standard mechanical seal: SL-1048 (FlowTech series 100).
+   Bearing set: SKF 6209-2RS (standard), 6309-2RS (high-duty).

@@ -1,0 +1,63 @@
+SOVEREIGN Air-Gap Verification Report
+Machine: DESKTOP-RKPV2EJ
+Time:    2026-09-02T13:48:53.596588+00:00
+Summary: 3 passed / 3 warnings / 46 failed
+
+INFO | outline-tap0: DOWN | 00-FF-31-ED-6E-64, 10.0.85.2, 169.254.106.244, fe80::c5c3:c63b:680:7f
+WARN | Loopback Pseudo-Interface 1: UP | 127.0.0.1, ::1 ← external interface is UP
+WARN | Wi-Fi: UP | 00-45-E2-A9-93-7B, 10.121.180.222, 2409:40f3:20dc:7387:1619:71ba:29f3:3741, 2409:40f3:20dc:7387:2121:8701:4587:e784, fe80::332d:de07:2d78:b5c0 ← external interface is UP
+INFO | Local Area Connection* 1: DOWN | 02-45-E2-A9-93-7B, 169.254.211.252, fe80::be8c:26e3:10e0:7e6b
+INFO | Local Area Connection* 10: DOWN | 82-45-E2-A9-93-7B, 169.254.15.118, fe80::4439:8189:aee5:ce84
+FAIL | External interfaces still up: ['Loopback Pseudo-Interface 1', 'Wi-Fi']
+PASS | Cannot reach 8.8.8.8 (connection refused/timed out)
+FAIL | Reached 1.1.1.1:80 — machine is NOT air-gapped!
+FAIL | Reached google.com:80 — machine is NOT air-gapped!
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:58222 -> 2001:4860:4841:400:::443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:55385 -> 2404:6800:4013:813::bc:5228 (pid=20208)
+FAIL | External connection: 10.121.180.222:60538 -> 125.212.201.18:2112 (pid=5276)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:51517 -> 2404:6800:4013:804::8a:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:53109 -> 64:ff9b::2236:546e:443 (pid=20544)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:64586 -> 2404:6800:4013:813::84:443 (pid=20208)
+FAIL | External connection: 10.121.180.222:52526 -> 4.213.25.242:443 (pid=5108)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:51945 -> 64:ff9b::2236:546e:443 (pid=26228)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:62830 -> 2001:4860:4846:400:::443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:56720 -> 2001:4860:4845:400:::443 (pid=16672)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:58889 -> 2404:6800:4013:813::5e:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:64645 -> 64:ff9b::c0b2:8664:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:54214 -> 2001:4860:4844:400:::443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:51942 -> 2404:6800:4013:804::71:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:63062 -> 2001:4860:4846:400:::443 (pid=20544)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:51519 -> 2001:4860:4845:400:::443 (pid=20544)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:58874 -> 2404:6800:4002:819::2003:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:62551 -> 2404:6800:4013:800::5e:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:64956 -> 2404:6800:4013:813::54:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:56722 -> 2001:4860:4844:400:::443 (pid=16672)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:57006 -> 2404:6800:4013:813::71:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:56713 -> 2404:6800:4013:813::84:443 (pid=20544)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:51946 -> 2001:4860:4845:400:::443 (pid=26228)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:63039 -> 64:ff9b::1432:490f:443 (pid=24936)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:55500 -> 2404:6800:4002:81d::200e:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:63234 -> 2404:6800:4013:807::5f:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:55891 -> 2404:6800:4002:81c::2008:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:56729 -> 2001:4860:4845:400:::443 (pid=16672)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:51158 -> 2001:4860:4845:400:::443 (pid=20544)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:56707 -> 2001:4860:4845:400:::443 (pid=20544)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:62541 -> 2404:6800:4013:811::8b:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:61262 -> 64:ff9b::d8ef:203d:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:56608 -> 2404:6800:4013:811::71:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:62097 -> 2404:6800:4013:800::5e:443 (pid=20208)
+FAIL | External connection: 10.121.180.222:60537 -> 172.217.116.4:443 (pid=26228)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:56712 -> 64:ff9b::2236:546e:443 (pid=16672)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:51144 -> 2404:6800:4002:828::200e:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:50312 -> 2404:6800:4013:813::bc:5228 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:65239 -> 2404:6800:4013:813::84:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:56706 -> 2001:4860:4845:400:::443 (pid=20544)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:50880 -> 2404:6800:4002:819::2003:443 (pid=20208)
+FAIL | External connection: 2409:40f3:20dc:7387:2121:8701:4587:e784:56726 -> 2404:6800:4013:813::84:443 (pid=16672)
+INFO | iptables check skipped on non-Linux (Windows demo machine)
+INFO | On Linux air-gap laptop: run sudo bash egress/setup_egress.sh
+INFO | Docker not installed — skipping container check
+PASS | API gateway reachable: status=ok
+PASS | Chroma KB healthy: 24 chunks indexed
+WARN | Network monitor: packets_sent_per_sec = 1.0 (expected 0 on air-gap machine)
+FAIL | 120.0 packets/s sent — machine has external traffic

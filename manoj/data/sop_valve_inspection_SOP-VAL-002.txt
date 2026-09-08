@@ -1,0 +1,38 @@
+STANDARD OPERATING PROCEDURE
+SOP-VAL-002: Ball Valve Inspection Procedure
+Version: 3.1 | Effective: 2025-01-01 | Review: 2027-01-01
+
+1. SCOPE
+   Applies to all ball valves DN15–DN200 in Plant A, B, and C.
+
+2. FREQUENCY
+   Routine: every 3 months.
+   Triggered: after any process upset, abnormal vibration, or reported leak.
+
+3. TOOLS REQUIRED
+   - Ultrasonic thickness gauge (calibrated, cert within 12 months)
+   - Torque wrench 10–100 N·m
+   - Inspection mirror and torch
+   - Drip-test kit (for leak-off measurement)
+
+4. ACCEPTANCE CRITERIA
+   4.1 Wall thickness: minimum 95% of nominal thickness as per drawing.
+   4.2 Actuator torque: within ±10% of nameplate rating.
+   4.3 Leakage: zero visible leakage at body-to-bonnet joint.
+   4.4 Corrosion: no active pitting deeper than 0.3mm on pressure-retaining parts.
+
+5. PROCEDURE
+   Step 1: Isolate valve, depressurise, and lock-out per LOTO-MECH-01.
+   Step 2: Clean external surfaces. Photograph current condition.
+   Step 3: Measure wall thickness at 4 points on upstream and downstream flanges.
+   Step 4: Record actuator torque (open and close cycles).
+   Step 5: Perform visual inspection per Section 4.
+   Step 6: Complete inspection form IF-VAL-002 and upload to CMMS.
+
+6. FAILURE CRITERIA — IMMEDIATE ACTION REQUIRED
+   - Wall thickness < 95% nominal → raise Work Order, do not return to service.
+   - Visible leakage from body → immediate shutdown, notify supervisor.
+   - Actuator torque outside ±20% → replace actuator.
+
+7. REFERENCES
+   Engineering Drawing Standard EDS-101, ASME B16.34, API 598.

@@ -1,0 +1,16 @@
+[Simulated handwritten note — OCR output]
+
+Site visit notes — B. Patel, 2026-08-20
+
+Visited Plant B Bay 3 with A. Kumar.
+Valve unit 7 — flange looks OK to me but Kumar flagged thickness reading.
+Actuator feels stiff on close — torque was 42 Nm on the gauge.
+O-ring seating has light score mark — photo taken.
+
+Note to self: check if SOP-VAL-002 says to replace at 0.1mm score or
+just flag it. Kumar says flag and monitor.
+
+Mentioned to supervisor that next inspection should move to monthly
+given the wear trend. Will follow up.
+
+Also — pump room P-105 vibrating noticeably. Reported to maintenance.

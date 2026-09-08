@@ -1,0 +1,30 @@
+INSPECTION REPORT — MCC Panel 3 (Motor Control Centre)
+Date: 2026-08-28
+Inspector: P. Singh (Electrical)
+Location: Plant C, Electrical Room
+
+SUMMARY
+-------
+Annual thermographic inspection of MCC-3 as per Electrical Maintenance
+Plan EMP-2026. Two overheating breakers detected. One requires replacement
+before restart; one can wait until next planned maintenance window.
+
+FINDINGS
+--------
+1. Breaker CB-22 (30A, feeder to compressor C-12):
+   Surface temperature: 89°C. Baseline: 42°C. Delta: +47°C.
+   Status: CRITICAL — replace before energising.
+2. Breaker CB-31 (15A, lighting circuit):
+   Surface temperature: 58°C. Baseline: 44°C. Delta: +14°C.
+   Status: MONITOR — schedule replacement within 60 days.
+3. Bus bar connections: all torque values within spec (47–52 N·m).
+4. Arc flash PPE signage: current and compliant.
+
+RECOMMENDATION
+--------------
+Replace CB-22 immediately. Replacement part: Square-D QO130, in stock.
+Schedule CB-31 replacement by October 2026. Full re-thermograph after restart.
+
+SAFETY NOTE: All work must follow LOTO procedure LOTO-ELEC-01.
+
+Inspector signature: _________________

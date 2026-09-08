@@ -1,0 +1,144 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Sovereign — Model Manifest
+# "Adding a model or tool is a YAML edit" — demoed live on the third laptop.
+#
+# To add a new model: append an entry below and restart the task router.
+# No code changes required.
+# ──────────────────────────────────────────────────────────────────────────────
+
+models:
+
+  # ── Agent core / reasoning / document work ───────────────────────────────────
+  - id: nemotron-nano-9b
+    display_name: "NVIDIA Nemotron 3 Nano 9B"
+    task_types: [reasoning, document, approval_note, agent_core]
+    backend: llama_cpp                    # or tensorrt_llm for max perf on RTX
+    model_path: ./models/nemotron-nano-9b-instruct.Q4_K_M.gguf
+    quant: Q4_K_M
+    vram_mb: 5800
+    context_length: 8192
+    gpu_layers: -1                        # -1 = offload all layers to GPU
+    active: true
+    why: >
+      Hybrid Mamba-Transformer, purpose-built by NVIDIA for RTX laptops via
+      TensorRT-LLM. Tuned for tool-calling and low hallucination — exactly what
+      an agent core needs. Running the model NVIDIA optimised for our own silicon
+      is a genuinely strong "why this model" answer in front of judges.
+
+  # Fallback if 9B doesn't fit (3GB cards or low VRAM situations)
+  - id: nemotron-nano-4b
+    display_name: "NVIDIA Nemotron 3 Nano 4B"
+    task_types: [reasoning, document, agent_core]
+    backend: llama_cpp
+    model_path: ./models/nemotron-nano-4b-instruct.Q4_K_M.gguf
+    quant: Q4_K_M
+    vram_mb: 3000
+    context_length: 4096
+    gpu_layers: -1
+    active: true
+    why: Smaller footprint for constrained VRAM; keeps agent core on-GPU.
+
+  # ── Coding ───────────────────────────────────────────────────────────────────
+  - id: granite-4-8b
+    display_name: "IBM Granite 4.1 8B"
+    task_types: [coding, code_review, debugging]
+    backend: llama_cpp
+    model_path: ./models/granite-4.1-8b-instruct.Q4_K_M.gguf
+    quant: Q4_K_M
+    vram_mb: 5000
+    context_length: 8192
+    gpu_layers: -1
+    active: true
+    why: >
+      Currently benchmarks ahead of same-size Qwen on HumanEval. Built with
+      tool-calling workflows in mind. Apache-licensed. A real non-Qwen
+      alternative that holds up.
+
+  # ── Vision / scanned docs / drawings ─────────────────────────────────────────
+  - id: qwen25-vl-7b
+    display_name: "Qwen2.5-VL-7B-Instruct"
+    task_types: [vision, ocr, scanned_pdf, drawing, handwriting]
+    backend: llama_cpp                    # AWQ build or GGUF
+    model_path: ./models/qwen2.5-vl-7b-instruct.Q4_K_M.gguf
+    quant: Q4_K_M
+    vram_mb: 6000
+    context_length: 8192
+    gpu_layers: -1
+    active: true
+    why: >
+      Still the strongest open vision-language model at a size that fits 8GB.
+      Picked ONLY for vision — where it is genuinely best-in-class — not
+      everywhere. NVIDIA Nemotron Nano Omni (multimodal) needs 16-25 GB minimum
+      even quantised, too big for our cards.
+
+  # ── Task router / classifier (stays resident in VRAM alongside swapped model) ─
+  - id: gemma3-4b-router
+    display_name: "Gemma 3 4B (Task Router)"
+    task_types: [router, classifier]
+    backend: llama_cpp
+    model_path: ./models/gemma-3-4b-it.Q4_K_M.gguf
+    quant: Q4_K_M
+    vram_mb: 3200
+    context_length: 4096
+    gpu_layers: -1
+    resident: true                        # stays loaded; never swapped out
+    active: true
+    why: >
+      Most memory-efficient 4B option (~3.2 GB). Stays resident so routing
+      decisions are instant (<150 ms) without a VRAM reload.
+
+  # ── CPU-only insurance ────────────────────────────────────────────────────────
+  - id: phi4-mini-cpu
+    display_name: "Phi-4-mini 3.8B (CPU fallback)"
+    task_types: [reasoning, document, coding]
+    backend: llama_cpp
+    model_path: ./models/phi-4-mini-instruct.Q4_K_M.gguf
+    quant: Q4_K_M
+    vram_mb: 0                            # 0 = CPU only
+    context_length: 4096
+    gpu_layers: 0                         # force CPU
+    active: true
+    why: >
+      Insurance if a laptop GPU/driver breaks mid-event. Runs with no GPU at all.
+      Slower but produces correct output — keeps the demo alive.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Embeddings (always CPU, stays loaded)
+# ──────────────────────────────────────────────────────────────────────────────
+embeddings:
+  - id: bge-small-en
+    display_name: "BAAI/bge-small-en-v1.5"
+    hf_repo: BAAI/bge-small-en-v1.5
+    device: cpu                           # or cuda; set in .env
+    vram_mb: 0
+    active: true
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Task routing rules
+# Map task_type → preferred model id (router uses this as its decision table)
+# Punit's router reads this file at startup — no code change needed to retune.
+# ──────────────────────────────────────────────────────────────────────────────
+routing:
+  reasoning:    nemotron-nano-9b
+  document:     nemotron-nano-9b
+  approval_note: nemotron-nano-9b
+  agent_core:   nemotron-nano-9b
+  coding:       granite-4-8b
+  code_review:  granite-4-8b
+  debugging:    granite-4-8b
+  vision:       qwen25-vl-7b
+  ocr:          qwen25-vl-7b
+  scanned_pdf:  qwen25-vl-7b
+  drawing:      qwen25-vl-7b
+  handwriting:  qwen25-vl-7b
+  router:       gemma3-4b-router
+  fallback:     phi4-mini-cpu             # used if preferred model fails to load
+
+# ──────────────────────────────────────────────────────────────────────────────
+# VRAM swap policy
+# ──────────────────────────────────────────────────────────────────────────────
+swap_policy:
+  max_vram_mb: 7500                       # leave ~500 MB headroom on 8 GB card
+  unload_on_swap: true                    # unload previous model before loading next
+  resident_models: [gemma3-4b-router]     # never unloaded
+  swap_timeout_sec: 30                    # fail task if model doesn't load in time

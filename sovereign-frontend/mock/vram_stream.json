@@ -1,0 +1,23 @@
+[
+  {"timestamp": 0, "vram_used_mb": 512, "model_loaded": "router/Nemotron-4B", "total_mb": 8192},
+  {"timestamp": 2, "vram_used_mb": 512, "model_loaded": "router/Nemotron-4B", "total_mb": 8192},
+  {"timestamp": 4, "vram_used_mb": 4800, "model_loaded": "Nemotron-9B", "total_mb": 8192, "event": "model_load"},
+  {"timestamp": 6, "vram_used_mb": 5100, "model_loaded": "Nemotron-9B", "total_mb": 8192},
+  {"timestamp": 8, "vram_used_mb": 5200, "model_loaded": "Nemotron-9B", "total_mb": 8192},
+  {"timestamp": 10, "vram_used_mb": 5150, "model_loaded": "Nemotron-9B", "total_mb": 8192},
+  {"timestamp": 12, "vram_used_mb": 5200, "model_loaded": "Nemotron-9B", "total_mb": 8192},
+  {"timestamp": 14, "vram_used_mb": 600, "model_loaded": "unloading...", "total_mb": 8192, "event": "model_unload"},
+  {"timestamp": 16, "vram_used_mb": 5400, "model_loaded": "Granite-4.1-8B", "total_mb": 8192, "event": "model_load"},
+  {"timestamp": 18, "vram_used_mb": 5500, "model_loaded": "Granite-4.1-8B", "total_mb": 8192},
+  {"timestamp": 20, "vram_used_mb": 5450, "model_loaded": "Granite-4.1-8B", "total_mb": 8192},
+  {"timestamp": 22, "vram_used_mb": 5600, "model_loaded": "Granite-4.1-8B", "total_mb": 8192},
+  {"timestamp": 24, "vram_used_mb": 600, "model_loaded": "unloading...", "total_mb": 8192, "event": "model_unload"},
+  {"timestamp": 26, "vram_used_mb": 6200, "model_loaded": "Qwen2.5-VL-7B", "total_mb": 8192, "event": "model_load"},
+  {"timestamp": 28, "vram_used_mb": 6400, "model_loaded": "Qwen2.5-VL-7B", "total_mb": 8192},
+  {"timestamp": 30, "vram_used_mb": 6300, "model_loaded": "Qwen2.5-VL-7B", "total_mb": 8192},
+  {"timestamp": 32, "vram_used_mb": 6250, "model_loaded": "Qwen2.5-VL-7B", "total_mb": 8192},
+  {"timestamp": 34, "vram_used_mb": 600, "model_loaded": "unloading...", "total_mb": 8192, "event": "model_unload"},
+  {"timestamp": 36, "vram_used_mb": 5100, "model_loaded": "Nemotron-9B", "total_mb": 8192, "event": "model_load"},
+  {"timestamp": 38, "vram_used_mb": 5200, "model_loaded": "Nemotron-9B", "total_mb": 8192},
+  {"timestamp": 40, "vram_used_mb": 5150, "model_loaded": "Nemotron-9B", "total_mb": 8192}
+]

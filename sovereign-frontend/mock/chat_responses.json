@@ -1,0 +1,56 @@
+[
+  {
+    "scenario": "document_reasoning",
+    "trigger_keywords": ["summarize", "approval", "report", "sop", "findings", "draft", "note"],
+    "model": "Nemotron-9B",
+    "task_type": "document_reasoning",
+    "steps": [
+      {"type": "router", "content": "Task classified as `document_reasoning` (confidence: 91%). Loading **Nemotron-9B**…", "delay": 400},
+      {"type": "tool_call", "tool": "kb_search", "args": {"query": "inspection report SOP compliance", "top_k": 5, "access_filter": "department"}, "result": "Retrieved 5 chunks from SOP-2024-rev3 and InspectionProtocol-Aug", "delay": 900},
+      {"type": "tool_call", "tool": "file_read", "args": {"file": "inspection_report_aug_2026.pdf"}, "result": "Parsed 12 pages. Key findings: 3 non-conformances in section 4.2, 4.7, 6.1", "delay": 700},
+      {"type": "token_stream", "content": "## Inspection Report Summary — August 2026\n\nBased on the retrieved SOP-2024-rev3 and the uploaded inspection report, the following findings require action:\n\n**Non-Conformances Identified**\n\n1. **Section 4.2 — Pressure Valve Calibration**: Last calibrated 14 months ago. SOP mandates 12-month intervals. → *Action required within 30 days*\n\n2. **Section 4.7 — Safety Signage**: Two floor markers in Bay 3 are faded below visibility threshold defined in Protocol-Aug. → *Immediate rectification required*\n\n3. **Section 6.1 — Maintenance Log Integrity**: Three entries lack supervisor countersignature. → *Retrospective sign-off required by department lead*\n\n**Recommendation**: Issue a formal Corrective Action notice for items 1 and 3. Item 2 qualifies for immediate remediation order.", "delay": 200},
+      {"type": "tool_call", "tool": "doc_gen", "args": {"template": "approval_note", "format": "docx", "title": "Corrective Action Notice — Aug 2026 Inspection"}, "result": "Generated: corrective_action_notice_aug2026.docx (14KB)", "delay": 1200},
+      {"type": "critique", "content": "Self-critique pass: All three cited sections verified against SOP-2024-rev3 chunks. No hallucinated references detected. Output grounded.", "delay": 500},
+      {"type": "done", "deliverable": {"name": "corrective_action_notice_aug2026.docx", "size": "14KB", "type": "docx"}}
+    ]
+  },
+  {
+    "scenario": "code_generation",
+    "trigger_keywords": ["write", "code", "function", "script", "python", "calculate", "parse", "generate"],
+    "model": "Granite-4.1-8B",
+    "task_type": "code_generation",
+    "steps": [
+      {"type": "router", "content": "Task classified as `code_generation` (confidence: 94%). Loading **Granite-4.1-8B**…", "delay": 350},
+      {"type": "tool_call", "tool": "code_sandbox", "args": {"action": "prepare", "network": "none"}, "result": "Sandbox ready. Network isolated (--network none). Python 3.11 available.", "delay": 600},
+      {"type": "token_stream", "content": "Here's a Python function to parse inspection reports from structured PDFs:\n\n```python\nimport re\nfrom dataclasses import dataclass, field\nfrom typing import List, Optional\n\n@dataclass\nclass Finding:\n    section: str\n    severity: str  # 'critical' | 'major' | 'minor'\n    description: str\n    action_required: Optional[str] = None\n\n@dataclass  \nclass InspectionReport:\n    report_id: str\n    date: str\n    inspector: str\n    findings: List[Finding] = field(default_factory=list)\n\ndef parse_inspection_report(text: str) -> InspectionReport:\n    \"\"\"Parse raw inspection report text into structured data.\"\"\"\n    lines = text.strip().split('\\n')\n    \n    report = InspectionReport(\n        report_id=_extract(lines, r'Report ID:\\s*([\\w-]+)'),\n        date=_extract(lines, r'Date:\\s*([\\d/]+)'),\n        inspector=_extract(lines, r'Inspector:\\s*(.+)')\n    )\n    \n    # Parse non-conformance sections\n    nc_pattern = re.compile(\n        r'(\\d+\\.\\d+)\\s*[-–]\\s*(.+?)(?=\\d+\\.\\d+|$)', \n        re.DOTALL\n    )\n    for match in nc_pattern.finditer(text):\n        report.findings.append(Finding(\n            section=match.group(1),\n            severity=_classify_severity(match.group(2)),\n            description=match.group(2).strip()\n        ))\n    \n    return report\n\ndef _extract(lines, pattern):\n    for line in lines:\n        m = re.search(pattern, line)\n        if m: return m.group(1)\n    return ''\n\ndef _classify_severity(text: str) -> str:\n    text_lower = text.lower()\n    if any(w in text_lower for w in ['immediate', 'critical', 'safety']):\n        return 'critical'\n    if any(w in text_lower for w in ['required', 'non-conform', 'must']):\n        return 'major'\n    return 'minor'\n```", "delay": 150},
+      {"type": "tool_call", "tool": "code_sandbox", "args": {"action": "run", "code": "test suite — 3 unit tests"}, "result": "✓ 3/3 tests passed. No network calls detected. Sandbox exited clean.", "delay": 1000},
+      {"type": "critique", "content": "Self-critique: Function handles edge cases for missing fields, regex is non-greedy. Tested against 3 sample inputs — all parsed correctly.", "delay": 400},
+      {"type": "done"}
+    ]
+  },
+  {
+    "scenario": "vision_ocr",
+    "trigger_keywords": ["image", "scan", "handwritten", "drawing", "read this", "extract", "photo", "diagram"],
+    "model": "Qwen2.5-VL-7B",
+    "task_type": "vision_ocr",
+    "steps": [
+      {"type": "router", "content": "Task classified as `vision_ocr` (confidence: 98%). Loading **Qwen2.5-VL-7B**…", "delay": 380},
+      {"type": "tool_call", "tool": "ocr_preprocess", "args": {"file": "handwritten_note.jpg", "mode": "handwriting"}, "result": "Image preprocessed: contrast enhanced, deskewed 2.3°. Passed to vision model.", "delay": 700},
+      {"type": "token_stream", "content": "**Extracted text from handwritten note:**\n\n> *Bay 3 compressor — checked 2 Sep. Pressure reading at 142 PSI. Target range 135–150. OK.*\n> *Seal on unit C-07 showing minor wear — flag for next quarterly service.*\n> *Signed: R. Mehta, Maintenance Lead*\n\n---\n\n**Structured extraction:**\n\n| Field | Value |\n|-------|-------|\n| Location | Bay 3, Unit C-07 |\n| Date | 2 September 2026 |\n| Reading | 142 PSI (within range 135–150) |\n| Status | ✅ Normal |\n| Flag | Seal wear — queue for Q4 service |\n| Inspector | R. Mehta, Maintenance Lead |", "delay": 180},
+      {"type": "critique", "content": "Self-critique: Handwriting confidence score 0.93. Single ambiguous character in 'PSI' resolved by context. No hallucinated values.", "delay": 400},
+      {"type": "done"}
+    ]
+  },
+  {
+    "scenario": "rbac_denied",
+    "trigger_keywords": ["vendor negotiation", "q3 strategy", "board", "executive", "confidential"],
+    "model": "Nemotron-9B",
+    "task_type": "document_reasoning",
+    "steps": [
+      {"type": "router", "content": "Task classified as `document_reasoning` (confidence: 89%). Loading **Nemotron-9B**…", "delay": 400},
+      {"type": "tool_call", "tool": "kb_search", "args": {"query": "Q3 vendor negotiation strategy", "top_k": 5, "access_filter": "web_dev"}, "result": "ACCESS DENIED — 0 results returned. Requested chunks tagged `executive`. Current role: `web_dev`. Access level insufficient.", "delay": 800},
+      {"type": "rbac_block", "content": "**Access Denied**\n\nThe knowledge base contains documents matching your query, but they are tagged `executive` and your current role (`web_dev`) does not have access.\n\nThis denial has been logged to the audit trail. If you believe this is an error, contact your system administrator.", "delay": 300},
+      {"type": "done"}
+    ]
+  }
+]

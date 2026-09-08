@@ -1,0 +1,33 @@
+# Web and API Gateway
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.1
+pydantic>=2.7.4
+
+# Agent Core and Orchestration
+langgraph>=0.1.1
+langchain>=0.2.6
+langchain-community>=0.2.6
+langchain-core>=0.2.11
+langchain-openai>=0.1.9
+
+# Local LLM Serving (Fallback to llama.cpp for predictability on laptops)
+# llama-cpp-python>=0.2.79 # Commented out temporarily due to Windows MAX_PATH limits
+
+# Vector DB and RAG (Manoj's part)
+chromadb>=0.5.3
+sentence-transformers>=3.0.1
+
+# Document Generation (Manoj's part)
+python-docx>=1.1.2
+python-pptx>=1.0.2
+openpyxl>=3.1.5
+
+# Vision and OCR (Aparna's part)
+# Note: For Qwen-VL, specific Transformers/vLLM setups might be needed later
+transformers>=4.42.3
+torch>=2.3.1
+paddlepaddle>=2.6.1  # For PaddleOCR
+paddleocr>=2.7.3
+
+# Utilities
+python-dotenv>=1.0.1

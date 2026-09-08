@@ -1,0 +1,36 @@
+EXECUTIVE BRIEFING — Q3 2026 Vendor Negotiation Strategy
+Classification: EXECUTIVE / BOARD ONLY
+Prepared by: VP Operations
+Date: 2026-07-30
+
+STRATEGIC CONTEXT
+-----------------
+Our three primary MRO suppliers (ValveTech, FlowTech, ElectroParts) are due
+for contract renewal in Q1 2027. Combined annual spend: USD 4.2M.
+This briefing outlines negotiation leverage points and target price reductions.
+
+TARGET OUTCOMES
+---------------
+1. ValveTech (valves, actuators): current rate USD 1.8M/yr.
+   Target: 12% reduction to USD 1.58M via 3-year commitment.
+   Leverage: two competing quotes from Asia-Pacific suppliers already obtained.
+2. FlowTech (pump seals, bearings): current rate USD 1.4M/yr.
+   Target: 8% reduction + 48-hour emergency delivery SLA.
+   Leverage: recent quality issues (5 seal failures in 6 months, ref. reports above).
+3. ElectroParts (electrical components): current rate USD 1.0M/yr.
+   Target: hold on price, request consignment stock for top-10 fast-movers.
+
+NEGOTIATION TIMELINE
+--------------------
+August 2026:  Issue formal RFQ to all three and two alternate suppliers.
+October 2026: Review bids; shortlist to 2 per category.
+November 2026: Final negotiation; target signed LOIs before year-end.
+
+RISK
+----
+- FlowTech is sole-qualified for SL-1048 seal. Qualification of alternate
+  supplier (Robco) requires 3-month test programme — initiate in Q4.
+- ElectroParts consignment request may be declined; fallback: 90-day
+  safety stock funded from capex budget line CAP-2026-07.
+
+CONFIDENTIALITY: Do not share below VP level.

@@ -1,0 +1,34 @@
+# ── Core ─────────────────────────────────────────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+
+# ── Vector DB ─────────────────────────────────────────────────────────────────
+chromadb>=0.5.0
+
+# ── Embeddings ────────────────────────────────────────────────────────────────
+sentence-transformers>=3.0.0   # bge-small-en-v1.5
+
+# ── Document ingestion ────────────────────────────────────────────────────────
+PyMuPDF>=1.24.0                # fitz — PDF/scanned doc parsing
+python-docx>=1.1.0             # .docx reading + writing
+openpyxl>=3.1.0                # .xlsx reading + writing
+python-pptx>=0.6.23            # .pptx generation
+Pillow>=10.0.0                 # image handling for scanned pages
+pytesseract>=0.3.10            # OCR fallback (Tesseract)
+# paddleocr                    # optional — heavier, install separately on demo machine
+
+# ── Text chunking ─────────────────────────────────────────────────────────────
+langchain-text-splitters>=0.2.0
+
+# ── Network monitor ───────────────────────────────────────────────────────────
+psutil>=5.9.0
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+python-dotenv>=1.0.0
+loguru>=0.7.0
+rich>=13.7.0                   # pretty CLI output
+typer>=0.12.0                  # CLI for ingestor
+pyyaml>=6.0.1
+httpx>=0.27.0

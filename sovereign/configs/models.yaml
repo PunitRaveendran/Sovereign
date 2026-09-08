@@ -1,0 +1,29 @@
+models:
+  coding:
+    category: coding
+    model_name: granite
+    backend: llama.cpp
+    type: mock
+    required_vram_mib: 5000
+
+  vision:
+    category: vision
+    model_name: qwen-vl
+    backend: llama.cpp
+    type: vision
+    quantization: Q4
+    required_vram_mib: 6000
+
+  document:
+    category: document
+    model_name: nemotron
+    backend: llama.cpp
+    type: mock
+    required_vram_mib: 6000
+
+  general:
+    category: general
+    model_name: phi-4-mini
+    backend: llama.cpp
+    type: mock
+    required_vram_mib: 3000

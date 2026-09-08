@@ -1,0 +1,180 @@
+/* ============================================================
+   SOVEREIGN — Design Tokens (Stylish Premium)
+   tokens.css — single source of truth for all design values
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ── Default Theme (Sleek Light) ── */
+  --bg-void: #f4f4f5;
+  --bg-base: #fafafa;
+  --bg-surface: rgba(255, 255, 255, 0.7);
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 1);
+  --bg-elevated: #ffffff;
+  --bg-input: rgba(244, 244, 245, 0.8);
+
+  --border-subtle: rgba(9, 9, 11, 0.05);
+  --border-default: rgba(9, 9, 11, 0.1);
+  --border-strong: rgba(9, 9, 11, 0.15);
+
+  /* Brand Colors - Sharp, Premium */
+  --accent-primary: #a855f7; /* Purple 500 */
+  --accent-primary-dim: rgba(168, 85, 247, 0.1);
+  --accent-primary-glow: rgba(168, 85, 247, 0.3);
+
+  --accent-teal: #8b5cf6; /* Violet 500 */
+  --accent-teal-dim: rgba(139, 92, 246, 0.1);
+  --accent-teal-glow: rgba(139, 92, 246, 0.3);
+
+  --success: #10b981;
+  --success-dim: rgba(16, 185, 129, 0.1);
+  --danger: #ef4444;
+  --danger-dim: rgba(239, 68, 68, 0.1);
+  --warning: #f59e0b;
+  --warning-dim: rgba(245, 158, 11, 0.1);
+  --info: #3b82f6;
+
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  --text-inverse: #ffffff;
+
+  /* Model colors */
+  --model-nemotron: #8b5cf6;
+  --model-granite: #06b6d4;
+  --model-qwen: #f59e0b;
+  --model-router: #10b981;
+
+  --vram-free: rgba(59, 130, 246, 0.1);
+  --vram-used: #3b82f6;
+  --vram-warning: #f59e0b;
+  --vram-critical: #ef4444;
+
+  /* ── Typography (Clean & Modern) ── */
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 15px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 48px;
+
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* ── Spacing ── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 16px;
+  --sp-4: 24px;
+  --sp-5: 32px;
+  --sp-6: 48px;
+  --sp-8: 64px;
+  --sp-10: 80px;
+
+  /* ── Radii (Sleek, not overly round) ── */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-full: 9999px;
+
+  /* ── Shadows & Glass (Sharp, refined) ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --shadow-accent: 0 0 20px var(--accent-primary-glow);
+  --shadow-teal: 0 0 20px var(--accent-teal-glow);
+  
+  --blur-md: blur(12px);
+  --blur-lg: blur(24px);
+
+  /* ── Glassmorphism Variables ── */
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --glass-rim-1: rgba(255, 255, 255, 0.9);
+  --glass-rim-2: rgba(255, 255, 255, 0.4);
+  --glass-rim-3: rgba(0, 0, 0, 0.05);
+  --glass-specular-1: rgba(255, 255, 255, 0.8);
+  --glass-specular-2: rgba(255, 255, 255, 0);
+  --glass-specular-shadow: inset -0.695px 0.719px 0 rgba(255, 255, 255, 0.5);
+
+  /* ── Transitions (Framer Motion style) ── */
+  /* Spring-like curve for structural changes */
+  --ease-spring: linear(
+    0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.725 25.3%, 0.849 31.5%,
+    0.937 38.1%, 0.968 41.8%, 0.991 45.7%, 1.006 50.1%, 1.015 55%, 1.017 63.9%,
+    1.001
+  );
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-inout: cubic-bezier(0.87, 0, 0.13, 1);
+  --t-fast: 200ms;
+  --t-normal: 400ms;
+  --t-slow: 600ms;
+
+  --z-base: 1;
+  --z-panel: 10;
+  --z-overlay: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+}
+
+/* ============================================================
+   Dark theme overrides (Sleek Midnight)
+   ============================================================ */
+:root[data-theme="dark"] {
+  --bg-void: #000000;
+  --bg-base: #000000;
+  --bg-surface: rgba(10, 10, 10, 0.6);
+  --bg-card: rgba(17, 17, 17, 0.65);
+  --bg-card-hover: rgba(28, 28, 30, 0.85);
+  --bg-elevated: #1c1c1e;
+  --bg-input: rgba(255, 255, 255, 0.05);
+
+  --glass-bg: rgba(255, 255, 255, 0.119);
+  --glass-border: rgba(255, 255, 255, 0.208);
+  --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.221);
+  --glass-rim-1: rgba(255, 255, 255, 0.29);
+  --glass-rim-2: rgba(255, 255, 255, 0.029);
+  --glass-rim-3: rgba(0, 0, 0, 0.203);
+  --glass-specular-1: rgba(255, 255, 255, 0.168);
+  --glass-specular-2: rgba(255, 255, 255, 0);
+  --glass-specular-shadow: inset -0.695px 0.719px 0 rgba(255, 255, 255, 0.14);
+
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.15);
+
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-inverse: #09090b;
+
+  --accent-primary: #c084fc; /* Purple 400 */
+  --accent-primary-dim: rgba(192, 132, 252, 0.15);
+  --accent-primary-glow: rgba(192, 132, 252, 0.25);
+
+  --accent-teal: #a78bfa; /* Violet 400 */
+  --accent-teal-dim: rgba(167, 139, 250, 0.15);
+  --accent-teal-glow: rgba(167, 139, 250, 0.25);
+
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,397 @@
+/* ============================================================
+   SOVEREIGN — Layout System (Sleek Grid)
+   layout.css — grid, panels, responsive structure
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  font-weight: var(--weight-normal);
+  color: var(--text-primary);
+  background: var(--bg-void);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── App Shell ── */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#app::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.15), transparent 50%),
+    radial-gradient(circle at 80% 40%, rgba(59, 130, 246, 0.15), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.1), transparent 50%);
+  background-size: 200% 200%;
+  animation: meshAnim 20s ease-in-out infinite alternate;
+}
+
+[data-theme="dark"] #app::before {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(120, 34, 206, 0.05), transparent 50%),
+    radial-gradient(circle at 80% 40%, rgba(59, 130, 246, 0.03), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.03), transparent 50%);
+}
+
+@keyframes meshAnim {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 100%; }
+}
+
+/* ── Views ── */
+.view { display: none; width: 100%; height: 100%; position: relative; z-index: var(--z-base); }
+.view.active { display: flex; flex-direction: column; padding: var(--sp-4); }
+
+/* ── Auth View ── */
+#auth-view {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  background: radial-gradient(circle at center, rgba(168,85,247,0.05), transparent 60%);
+}
+#auth-view.active {
+  display: flex;
+}
+.auth-panel {
+  background: transparent;
+  padding: var(--sp-8);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* ── Topbar (Floating Panel) ── */
+#topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 72px; 
+  padding: 0 var(--sp-6);
+  margin-bottom: var(--sp-4);
+  flex-shrink: 0;
+  z-index: var(--z-panel);
+  gap: var(--sp-5);
+}
+
+.topbar-left  { display: flex; align-items: center; gap: var(--sp-5); }
+.topbar-center{ flex: 1; display: flex; align-items: center; justify-content: center; }
+.topbar-right { display: flex; align-items: center; gap: var(--sp-4); }
+
+/* ── Main Layout: Centered chat with absolute sidebars ── */
+#main-layout {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  gap: var(--sp-4);
+  padding: 0 40px; /* Leave space for hover edges */
+}
+
+/* ── Floating Panels ── */
+.bento-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: url(#gg-navbar-filter) blur(0px) saturate(1);
+  backdrop-filter: url(#gg-navbar-filter) blur(0px) saturate(1);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--t-normal) var(--ease-out), transform var(--t-fast) var(--ease-out);
+}
+
+.bento-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.bento-panel::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg, var(--glass-rim-1), var(--glass-rim-2) 40%, var(--glass-rim-3));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bento-panel::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(224deg, var(--glass-specular-1) 0%, var(--glass-specular-2) 45%);
+  box-shadow: var(--glass-specular-shadow);
+  z-index: 0;
+}
+
+.bento-panel:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+#chat-area {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#chat-area::before,
+#chat-area::after {
+  display: none !important;
+}
+
+/* ── Left & Right Columns (Sliding Auto-hide) ── */
+#sidebar, #right-panel {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  bottom: var(--sp-4);
+  z-index: 100;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+}
+
+#sidebar {
+  left: 0;
+  width: 280px;
+  transform: translateX(-100%);
+}
+
+#sidebar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -24px;
+  width: 24px;
+}
+
+#sidebar:hover, #sidebar:focus-within, #sidebar.force-open {
+  transform: translateX(0);
+}
+
+#right-panel {
+  right: 0;
+  width: 320px;
+  transform: translateX(100%);
+}
+
+#right-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -24px;
+  width: 24px;
+}
+
+#right-panel:hover, #right-panel:focus-within, #right-panel.force-open {
+  transform: translateX(0);
+}
+
+/* ── Chat Area (center panel) ── */
+#chat-area {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+}
+
+#chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  scroll-behavior: smooth;
+  scroll-padding-bottom: var(--sp-5);
+}
+
+#chat-messages::-webkit-scrollbar { width: 4px; }
+#chat-messages::-webkit-scrollbar-track { background: transparent; }
+#chat-messages::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: var(--r-full); }
+#chat-messages::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+#chat-input-area {
+  padding: var(--sp-4) var(--sp-6);
+  border-top: none;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+/* ── Common Panel Elements ── */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4) var(--sp-5) var(--sp-3);
+  gap: var(--sp-3);
+  border-bottom: 1px solid transparent; /* Keeps spacing consistent but clean */
+}
+
+.panel-body {
+  padding: 0 var(--sp-5) var(--sp-5);
+}
+
+/* ── Enforce Equal Height Side Panels ── */
+#sidebar .bento-panel,
+#right-panel .bento-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+#sidebar .panel-body,
+#right-panel .panel-body {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.flex-grow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.overflow-auto {
+  overflow-y: auto;
+}
+
+.overflow-auto::-webkit-scrollbar { width: 4px; }
+.overflow-auto::-webkit-scrollbar-track { background: transparent; }
+.overflow-auto::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: var(--r-full); }
+
+/* ── Scrollbars universal ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+/* ── Login View (Centered) ── */
+#login-view.view.active.split-screen-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: transparent;
+  padding: var(--sp-8);
+  overflow: hidden;
+  gap: var(--sp-2);
+}
+
+.login-hero {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-right: none;
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  text-align: center;
+  z-index: 10;
+}
+
+.hero-logo {
+  width: 64px;
+  height: 64px;
+  font-size: 32px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: var(--weight-bold);
+  letter-spacing: -1.5px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.hero-subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+}
+
+.login-panel {
+  width: auto;
+  max-width: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  position: relative;
+  overflow-y: visible;
+}
+
+.login-panel-inner {
+  width: 100%;
+  max-width: 1000px; /* Allow all 4 cards to fit in a row */
+  padding: var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-label {
+  display: block;
+  text-align: center;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-4);
+}

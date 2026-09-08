@@ -1,0 +1,102 @@
+/* ============================================================
+   SOVEREIGN — Animations (Framer Motion style)
+   animations.css — structural transitions & micro-interactions
+   ============================================================ */
+
+/* ── Entrance Animations (Staggered Fade in up) ── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  animation: framer-enter 0.6s var(--ease-spring) forwards;
+}
+
+.delay-1 { animation-delay: 0.05s; }
+.delay-2 { animation-delay: 0.1s; }
+.delay-3 { animation-delay: 0.15s; }
+
+@keyframes framer-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Magnetic Hover (JS adds this class, CSS provides easing) ── */
+.magnetic {
+  transition: transform 0.15s var(--ease-out);
+}
+
+/* ── Hover Tilts ── */
+.hover-tilt {
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), border-color 0.2s;
+}
+
+.hover-tilt:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.hover-tilt:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ── UI Element Entrances ── */
+@keyframes slide-in-bottom {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Background (Removed the Orbs, using a subtle gradient) ── */
+body {
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+              var(--bg-void);
+}
+
+[data-theme="dark"] body {
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+              radial-gradient(circle at bottom right, rgba(167, 139, 250, 0.08) 0%, transparent 40%),
+              var(--bg-void);
+}
+
+.orb {
+  display: none !important; /* Hide old orbs */
+}/* -- Custom Cursor Trail -- */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-primary-glow);
+  border: 1px solid var(--accent-primary);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: width 0.2s, height 0.2s, opacity 0.3s;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+[data-theme='light'] #custom-cursor {
+  mix-blend-mode: multiply;
+}
+
+body:hover #custom-cursor {
+  opacity: 1;
+}
+
+.animation-slide-up {
+  animation: slide-in-bottom 0.4s var(--ease-spring) forwards;
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": 1788352611.59,
+    "action": "RBAC_EVALUATION",
+    "role": "web_dev",
+    "tool": "search_kb",
+    "kwargs_hash": "3405af49102c",
+    "outcome": "GRANTED",
+    "prev_hash": "genesis",
+    "hash": "fc180aa4231b"
+  },
+  {
+    "timestamp": 1788352654.12,
+    "action": "RBAC_EVALUATION",
+    "role": "web_dev",
+    "tool": "search_kb",
+    "kwargs_hash": "99b3ca12ff41",
+    "outcome": "DENIED",
+    "prev_hash": "fc180aa4231b",
+    "hash": "e8bf4391bc4a"
+  },
+  {
+    "timestamp": 1788352682.05,
+    "action": "RBAC_EVALUATION",
+    "role": "department_lead",
+    "tool": "read_file",
+    "kwargs_hash": "772fca33ee19",
+    "outcome": "GRANTED",
+    "prev_hash": "e8bf4391bc4a",
+    "hash": "41a1bbcc920f"
+  },
+  {
+    "timestamp": 1788352735.88,
+    "action": "RBAC_EVALUATION",
+    "role": "department_lead",
+    "tool": "search_kb",
+    "kwargs_hash": "1002ccaabbdd",
+    "outcome": "DENIED",
+    "prev_hash": "41a1bbcc920f",
+    "hash": "664faadd210c"
+  },
+  {
+    "timestamp": 1788352820.30,
+    "action": "RBAC_EVALUATION",
+    "role": "vp_ceo",
+    "tool": "search_kb",
+    "kwargs_hash": "aa55cc8811ee",
+    "outcome": "GRANTED",
+    "prev_hash": "664faadd210c",
+    "hash": "9945faabb23c"
+  }
+]
