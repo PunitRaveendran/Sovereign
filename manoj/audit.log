@@ -15,3 +15,10 @@
 {"ts": "2026-09-04T14:13:47.405004+00:00", "user": "agent", "role": "web_dev", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public']}}"}
 {"ts": "2026-09-04T18:02:18.519354+00:00", "user": "agent", "role": "web_dev", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public']}}"}
 {"ts": "2026-09-04T18:08:10.560263+00:00", "user": "agent", "role": "web_dev", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public']}}"}
+{"ts": "2026-09-11T07:58:14.202811+00:00", "user": "agent", "role": "web_dev", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public']}}"}
+{"ts": "2026-09-11T08:09:42.699278+00:00", "user": "ceo_user", "role": "vp_ceo", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public', 'department', 'management', 'executive']}}"}
+{"ts": "2026-09-11T08:09:59.563842+00:00", "user": "agent", "role": "web_dev", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public']}}"}
+{"ts": "2026-09-11T08:10:17.225505+00:00", "user": "agent", "role": "web_dev", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public']}}"}
+{"ts": "2026-09-11T08:14:07.710774+00:00", "user": "test", "role": "web_dev", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public']}}"}
+{"ts": "2026-09-11T08:21:54.175016+00:00", "user": "agent", "role": "web_dev", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public']}}"}
+{"ts": "2026-09-11T08:26:28.807196+00:00", "user": "user", "role": "vp_ceo", "resource": "kb_search", "requested_level": "public", "granted": true, "reason": "filter={'access_level': {'$in': ['public', 'department', 'management', 'executive']}}"}

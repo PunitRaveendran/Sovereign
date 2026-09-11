@@ -34,10 +34,20 @@ class RBACManager:
         "board": ["Executive"]
     }
 
+    ROLE_ALIASES = {
+        "web_dev": "Engineer",
+        "department_lead": "Department Manager",
+        "management": "Plant Head",
+        "vp_ceo": "Executive"
+    }
+
     def can_execute(self, role: str, tool_name: str, **kwargs) -> bool:
         """
         Returns True if the role is allowed to execute the tool with the given arguments.
         """
+        # Normalize role name
+        role = self.ROLE_ALIASES.get(role, role)
+
         # 1. Verify role exists
         if role not in self.ROLE_TOOL_ACCESS:
             return False

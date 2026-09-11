@@ -325,13 +325,20 @@ Review the user's task, your plan, and the observations.
             summary = content.replace("STATUS: LOW_CONFIDENCE", "").strip() if ("LOW_CONFIDENCE" in content) else "Automated critique: Uploaded document contained ungrounded or unreadable optical telemetry. Findings could not be verified against ground truth."
             return {"status": "complete", "final_output": banner + summary}
         else:
-            import re
-            for obs in state.get('observations', []):
-                if "Successfully generated" in obs:
-                    match = re.search(r'(Successfully generated (DOCX|PPTX|XLSX):\s*\S+)', obs, re.IGNORECASE)
-                    if match:
-                        content += f"\n\n{match.group(1)}"
-            return {"status": "complete", "final_output": content if content.strip() else "Task completed successfully."}
+            if not content.strip() or content.strip() == "Task completed successfully.":
+                obs_parts = []
+                for obs in state.get('observations', []):
+                    if "Executed search_kb:" in obs:
+                        kb_data = obs.split("Executed search_kb:", 1)[1].strip()
+                        obs_parts.append(f"**Knowledge Base Results:**\n\n{kb_data}")
+                    elif "Executed run_python_code:" in obs:
+                        code_res = obs.split("Executed run_python_code:", 1)[1].strip()
+                        obs_parts.append(f"**Execution Output:**\n\n{code_res}")
+                if obs_parts:
+                    content = "\n\n---\n\n".join(obs_parts)
+                else:
+                    content = "Task completed successfully."
+            return {"status": "complete", "final_output": content}
 
     async def run(self, task: str, role: str, user_id: str = "user") -> dict:
         """

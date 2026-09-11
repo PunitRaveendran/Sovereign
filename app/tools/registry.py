@@ -12,7 +12,11 @@ def map_role_to_manoj(role: str) -> str:
         "Department Manager": "department_lead",
         "Procurement": "management",
         "Plant Head": "vp_ceo",
-        "Executive": "vp_ceo"
+        "Executive": "vp_ceo",
+        "web_dev": "web_dev",
+        "department_lead": "department_lead",
+        "management": "management",
+        "vp_ceo": "vp_ceo"
     }
     return mapping.get(role, "web_dev")
 
@@ -223,7 +227,15 @@ class ToolRegistry:
         
         try:
             tool = self.tools[name]
-            clean_kwargs = {k: v for k, v in kwargs.items() if k not in ["task_context", "user_id", "role"]}
+            clean_kwargs = {k: v for k, v in kwargs.items() if k not in ["task_context"]}
+            if name == "search_kb":
+                clean_kwargs["role"] = user_role
+                if "user_id" in kwargs:
+                    clean_kwargs["user_id"] = kwargs["user_id"]
+            else:
+                clean_kwargs.pop("user_id", None)
+                clean_kwargs.pop("role", None)
+
             if hasattr(tool, "invoke"):
                 result = tool.invoke(clean_kwargs)
             else:
